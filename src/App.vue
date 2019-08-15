@@ -7,11 +7,23 @@
 
 <script>
 import HelloWorld from './components/HelloWorld.vue'
-
+import axios from 'axios'
 export default {
   name: 'app',
   components: {
     HelloWorld
+  },
+  data () {
+    return {
+      data:[],
+    }
+  },
+  mounted:function () {
+      axios.get('/api/data').then(res =>{
+        this.data = res.data
+        console.log(res.data)
+      })
+    
   }
 }
 </script>
